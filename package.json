@@ -1,0 +1,15 @@
+{
+  "name" : "opml-utils",
+  "author" : "Dave Winer",
+  "contributors": [{
+      "name": "Dave Winer",
+      "email": "scriptingnews2mail@gmail.com"
+    }{
+      "name": "Dan Revel",
+      "email": "dan@nopolabs.com"
+    }],
+  "devDependencies": {
+    "should": "*"
+  },
+  "main" : "./utils.js"
+}
