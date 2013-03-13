@@ -1,5 +1,5 @@
 //string and date utility routines for Small Picture Javascript code.
-  function stringKBytes (num)  { 
+	function stringKBytes (num)  { 
 		return (Math.round (num / 1024) + "K");
 		}
 	function sameDay (d1, d2)  { 
@@ -18,6 +18,14 @@
 		weekday[6]="Saturday";
 		return (weekday[theDay]);
 		}
+	function monthToString (theMonthNum)  { //3/8/13 by DW
+		var names = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+		if (theMonthNum == undefined)  { 
+			var now = new Date ();
+			theMonthNum = now.getMonth ();
+			}
+		return (names [theMonthNum]);
+		}
 	function timeString (when, flIncludeSeconds)  { 
 		var hour = when.getHours (), minutes = when.getMinutes (), ampm = "AM", s;
 		if (hour >= 12)  { 
@@ -25,6 +33,9 @@
 			}
 		if (hour > 12)  { 
 			hour -= 12;
+			}
+		if (hour == 0) { 
+			hour = 12;
 			}
 		if (minutes < 10)  { 
 			minutes = "0" + minutes;
@@ -127,4 +138,19 @@
 		}
 	function getURLParameter (name)  { 
 		return (decodeURI ((RegExp(name + '=' + '(.+?)(&|$)').exec(location.search)||[,null])[1]));
+		}
+	function trimLeading (s, ch)  { //3/10/13 by DW
+		while (s.charAt (0) === ch)  { 
+			s = s.substr (1);
+			}
+		return (s);
+		}
+	function trimTrailing (s, ch)  { //3/10/13 by DW
+		while (s.charAt (s.length - 1) === ch)  { 
+			s = s.substr (0, s.length - 1);
+			}
+		return (s);
+		}
+	function trimWhitespace (s)   { //3/10/13 by DW
+		return (trimLeading (trimTrailing (s, " "), " "));
 		}
